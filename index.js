@@ -1,14 +1,14 @@
-function edge(callback, terminate) {
-    const IServerXMLHTTPRequest2 = require('MSXML2.ServerXMLHTTP')
-    const genGUID = require('genGUID')
-    const { writeTextFileSync, existsdirSync } = require('filesystem')
-    const { resolve, WorkingDirectory } = require('pathname')
-    const Event = require('event')
-    const { isRegExp } = require('typecheck')
-    const { color } = require('ansi')
-    const { Window, request } = require('webdriver')
-    const TERMINATE = 'terminate'
+const IServerXMLHTTPRequest2 = require('MSXML2.ServerXMLHTTP')
+const genGUID = require('genGUID')
+const { writeTextFileSync, existsdirSync } = require('filesystem')
+const { resolve, WorkingDirectory } = require('pathname')
+const Event = require('event')
+const { isRegExp } = require('typecheck')
+const { color } = require('ansi')
+const { Window, request } = require('webdriver')
+const TERMINATE = 'terminate'
 
+function edge(callback, terminate) {
     let close = false
     class Navigation extends Event {
         emit(url, ...args) {
