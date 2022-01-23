@@ -4,7 +4,7 @@
   "description": "Edge automation assistance",
   "main": "index.js",
   "dependencies": {
-    "webdriver": "0.0.6"
+    "webdriver": "0.0.7"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
