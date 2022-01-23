@@ -1,0 +1,22 @@
+{
+  "name": "edge",
+  "version": "0.0.2",
+  "description": "Edge automation assistance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wachaon/edge.git"
+  },
+  "keywords": [
+    "wes edge automation"
+  ],
+  "author": "wachaon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wachaon/edge/issues"
+  },
+  "homepage": "https://github.com/wachaon/edge#readme"
+}
