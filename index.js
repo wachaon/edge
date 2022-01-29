@@ -39,13 +39,13 @@ function edge(callback, terminate) {
 
     if (typeof terminate == 'function') navigation.on(TERMINATE, terminate)
     else {
-        navigation.on(TERMINATE, (message, res, win) => {
+        navigation.on(TERMINATE, (message, res) => {
             const log = resolve(WorkingDirectory, 'log')
             const spec = existsdirSync(log)
                 ? resolve(log, genGUID() + '.json')
                 : resolve(WorkingDirectory, genGUID() + '.json')
             const source = JSON.stringify(res, null, 2)
-            console.print('%S%S ', color(255, 165, 0), message)
+            console.print('%S%S ', color(255, 165, 0), message || 'terminate')
             console.log(writeTextFileSync(spec, source))
         })
     }

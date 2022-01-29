@@ -1,2 +1,67 @@
 # edge
-Edge automation assistance
+*@wachaon/edge* は *wes* で *edge* の自動操縦を支援するモジュールです。
+
+## インストール
+
+```shell
+wes install @wachaon/edge --unsafe --bare
+```
+
+モジュールを使用するには別途 *web driver* が必要になります。*web driver* は *@wachaon/edge* をインストールした後、コンソールで
+
+```shell
+wes edge
+```
+
+を実行すると、環境にあった *web driver* をダウンロードします。
+zipを解凍し、*web driver* をカレントディレクトリもしくは環境変数に登録されているディレクトリに配置してください。
+
+## 使い方
+
+`edge` は一般的な自動操縦の様に動作手続きを宣言的に記述するのではなく、*url* に対して *event* を設定していくイベントドリブンスタイルで操縦します。
+イベントの *url* には文字列以外に正規表現も設定できるので、柔軟な設定が可能になります。
+自動操縦には不向きな場面も、あえて *url* を設定しないことで手動操縦に容易に切り替えが可能です。
+終了させるにはブラウザを閉じるか `navigation.emit('terminate')` を実行できる様にスクリプトを構成してください。
+
+下記のコードを実行してください。
+ブラウザを閉じるか `https://www.yahoo` から始まる *url* に訪問するまで、*url* をコンソールに表示します。
+
+```javascript
+const edge = require('edge')
+
+edge((window, navi, res) => {
+    window.rect({
+        x: 1,
+        y: 1,
+        width: 1200,
+        height: 500
+    })
+    res.exports = []
+
+    navi.on(/^https:\/\/www\.yahoo\b/, (url) => {
+        console.log('finished!')
+        navi.emit('terminate', res, window)
+
+    })
+
+    navi.on(/./, (url) => {
+        console.log('URL: %O', url)
+        res.exports.push(url)
+    })
+    
+    window.navigate('http://www.google.com')
+})
+```
+
+### `callback(window, navigation, result)`
+
+| argument | type | description |
+|:---|:---|:---|
+| `window` | *{window}* | *window* を操作するクラス<br>*@wachaon/webdriver* の *window* クラスになります |
+| `navigation` | *{event}* | *event* の *Pub/Sub* (出版・購読型)モデル |
+| `result` | *{export}* | `result.export` にデータを入れることで、ファイルなどへの出力が容易になります |
+
+### `terminate(message, result)`
+
+`terminate()` は `navigation.emit('terminate')` が実行された時の挙動を記述します。既定値は *log* もしくはカレントディレクトリに `JSON.stringify(result.export)` の結果をファイルに出力します。
+`message` は 終了時にコンソールに出力するメッセージになります。

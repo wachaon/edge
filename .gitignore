@@ -3,3 +3,4 @@ dev/
 log/
 .gitignore
 msedgedriver.exe
+.prettierrc

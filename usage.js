@@ -1,12 +1,16 @@
-const edge = require('./index')
+const edge = require('./index.js')
 
 edge((window, navi, res) => {
-    window.rect({x: 1 ,y: 1, width: 1200, height: 500})
-    window.navigate('http://www.google.com')
+    window.rect({
+        x: 1,
+        y: 1,
+        width: 1200,
+        height: 500
+    })
     res.exports = []
 
-    navi.on(/^https:\/\/www\.yahoo\.co\.jp/, (url) => {
-        console.log('終了します')
+    navi.on(/^https:\/\/www\.yahoo\b/, (url) => {
+        console.log('finished!')
         navi.emit('terminate', res, window)
 
     })
@@ -15,4 +19,7 @@ edge((window, navi, res) => {
         console.log('URL: %O', url)
         res.exports.push(url)
     })
+
+    window.getStatus()
+    window.navigate('http://www.google.com')
 })
