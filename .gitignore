@@ -1,7 +1,5 @@
 node_modules/
 dev/
-log/
 .gitignore
-msedgedriver.exe
 .prettierrc
-/log
+log/
