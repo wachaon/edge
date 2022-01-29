@@ -9,13 +9,13 @@ edge((window, navi, res) => {
     })
     res.exports = []
 
-    navi.on(/^https:\/\/www\.yahoo\b/, (url) => {
+    navi.on(/^https?:\/\/www\.yahoo\b/, (url) => {
         console.log('finished!')
         navi.emit('terminate', res, window)
 
     })
 
-    navi.on(/./, (url) => {
+    navi.on(/https?:\/\/./, (url) => {
         console.log('URL: %O', url)
         res.exports.push(url)
     })
