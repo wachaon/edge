@@ -63,6 +63,9 @@ function edge(callback, terminate) {
                 null,
                 'Poling'
             )
+
+            if (res == null && !('value' in res) && !res.value) continue
+
             res = request(
                 IServerXMLHTTPRequest2,
                 'GET',
