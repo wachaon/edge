@@ -56,7 +56,14 @@ function edge(callback, terminate) {
         let url = window.getURL()
 
         while (!close) {
-            const res = request(
+            let res = request(
+                IServerXMLHTTPRequest2,
+                'GET',
+                `http://localhost:${window.port}/status`,
+                null,
+                'Poling'
+            )
+            res = request(
                 IServerXMLHTTPRequest2,
                 'GET',
                 `http://localhost:${window.port}/session/${window.sessionId}/url`,

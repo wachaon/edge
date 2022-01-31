@@ -20,6 +20,5 @@ edge((window, navi, res) => {
         res.exports.push(url)
     })
 
-    window.getStatus()
     window.navigate('http://www.google.com')
 })
