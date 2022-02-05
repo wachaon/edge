@@ -12,7 +12,6 @@ edge((window, navi, res) => {
     navi.on(/^https?:\/\/www\.yahoo\b/, (url) => {
         console.log('finished!')
         navi.emit('terminate', res, window)
-
     })
 
     navi.on(/https?:\/\/./, (url) => {
