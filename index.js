@@ -1,6 +1,6 @@
 const IServerXMLHTTPRequest2 = require('MSXML2.ServerXMLHTTP')
 const genGUID = require('genGUID')
-const { writeTextFileSync, existsdirSync } = require('filesystem')
+const { writeFileSync, existsdirSync } = require('filesystem')
 const { resolve, WorkingDirectory } = require('pathname')
 const Event = require('event')
 const { isRegExp } = require('typecheck')
@@ -46,7 +46,7 @@ function edge(callback, terminate) {
                 : resolve(WorkingDirectory, genGUID() + '.json')
             const source = JSON.stringify(res, null, 2)
             console.print('%S%S ', color(255, 165, 0), message || 'terminate')
-            console.log(writeTextFileSync(spec, source))
+            console.log(writeFileSync(spec, source, 'UTF-8'))
         })
     }
 
