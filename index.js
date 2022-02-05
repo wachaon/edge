@@ -5,7 +5,7 @@ const { resolve, WorkingDirectory } = require('pathname')
 const Event = require('event')
 const { isRegExp } = require('typecheck')
 const { color } = require('ansi')
-const { Window, request, getWebDriver } = require('webdriver')
+const { Window, request, getEdgeWebDriver } = require('webdriver')
 const TERMINATE = 'terminate'
 
 function edge(callback, terminate) {
@@ -91,4 +91,4 @@ function edge(callback, terminate) {
 
 module.exports = edge
 
-if (wes.Modules[wes.main].path === __filename) getWebDriver()
+if (wes.Modules[wes.main].path === __filename) getEdgeWebDriver()
