@@ -5,6 +5,7 @@ const { resolve, WorkingDirectory } = require('pathname')
 const Event = require('event')
 const { isRegExp } = require('typecheck')
 const { color } = require('ansi')
+const { has } = require('argv')
 const { Window, request, getEdgeWebDriver } = require('webdriver')
 const TERMINATE = 'terminate'
 
@@ -81,4 +82,7 @@ function edge(callback, terminate) {
 
 module.exports = edge
 
-if (wes.Modules[wes.main].path === __filename) getEdgeWebDriver()
+// command line
+if (wes.Modules[wes.main].path === __filename) {
+    if (has('d') || has('download')) getEdgeWebDriver()
+}

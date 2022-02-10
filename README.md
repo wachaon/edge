@@ -15,14 +15,13 @@
 wes install @wachaon/edge --unsafe --bare
 ```
 
-モジュールを使用するには別途 *web driver* が必要になります。*web driver* は *@wachaon/edge* をインストールした後、コンソールで
+*WebDriver* とブラウザは同じバージョンのものを使用する必要があります。
+
+このモジュールをコマンドラインから `-d` もしくは `--download` オプションを指定して実行すると、ブラウザのバージョンとアーキテクチャーが同じ *WebDriver* をダウンロードし展開します。
 
 ```shell
-wes edge
+wes edge --download
 ```
-
-を実行すると、環境にあった *web driver* をダウンロードします。
-zipを解凍し、*web driver* をカレントディレクトリもしくは環境変数に登録されているディレクトリに配置してください。
 
 ## 使い方
 
