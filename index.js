@@ -57,12 +57,13 @@ function edge(callback, terminate) {
         let url = 'about:blank'
 
         while (!close) {
+            const _url = nomarize(url)
             let res = request(
                 IServerXMLHTTPRequest2,
                 'GET',
                 `http://localhost:${window.port}/session/${window.sessionId}/url`,
                 null,
-                'Poling'
+                _url
             )
             if (close || IServerXMLHTTPRequest2.status != 200) break
             let curr = res ? res.value : null
@@ -81,6 +82,15 @@ function edge(callback, terminate) {
 }
 
 module.exports = edge
+
+// util
+function nomarize(url, size = 60) {
+    if (url.length < size) return url
+    const exp = /(^https?:\/\/[^\/]+\/)/
+    const prefix = exp.test(url) ? url.match(/(^https?:\/\/[^\/]+\/)/)[1] : url.slice(0, 20)
+    const suffix = url.slice((size - 4 - prefix.length) * -1)
+    return `${prefix} ...${suffix}`
+}
 
 // command line
 if (wes.Modules[wes.main].path === __filename) {
