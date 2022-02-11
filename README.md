@@ -64,7 +64,7 @@ edge((window, navi, res) => {
 ### `callback(window, navigation, result)`
 
 | argument | type | description |
-|:---|:---|:---|
+|:---|:---:|:---|
 | `window` | *{window}* | *window* を操作するクラス<br>*@wachaon/webdriver* の *window* クラスになります |
 | `navigation` | *{event}* | *event* の *Pub/Sub* (出版・購読型)モデル |
 | `result` | *{export}* | `result.export` にデータを入れることで、ファイルなどへの出力が容易になります |

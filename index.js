@@ -41,10 +41,11 @@ function edge(callback, terminate) {
     if (typeof terminate == 'function') navigation.on(TERMINATE, terminate)
     else {
         navigation.on(TERMINATE, (message, res) => {
+            const file = res.spec != null ? res.spec : genGUID() + '.json'
             const log = resolve(WorkingDirectory, 'log')
             const spec = existsdirSync(log)
-                ? resolve(log, genGUID() + '.json')
-                : resolve(WorkingDirectory, genGUID() + '.json')
+                ? resolve(log, file)
+                : resolve(WorkingDirectory, file)
             const source = JSON.stringify(res, null, 2)
             console.print('%S%S ', color(255, 165, 0), message || 'terminate')
             console.log(writeFileSync(spec, source, 'UTF-8'))
@@ -78,6 +79,7 @@ function edge(callback, terminate) {
         if (!close) navigation.emit(TERMINATE, result, window)
     } finally {
         window.close()
+        return result
     }
 }
 
