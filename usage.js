@@ -1,4 +1,4 @@
-const edge = require('./index.js')
+const edge = require('/index.js')
 
 edge((window, navi, res) => {
     window.rect({
@@ -14,7 +14,7 @@ edge((window, navi, res) => {
         navi.emit('terminate', res, window)
     })
 
-    navi.on(/https?:\/\/./, (url) => {
+    navi.on(/https?:\/\/.+/, (url) => {
         console.log('URL: %O', url)
         res.exports.push(url)
     })

@@ -3,7 +3,7 @@
 
 ## 特徴
 
-`edge` は一般的な自動操縦の様に動作手続きを宣言的に記述するだけではなく、*url* に対して *event* を設定していくイベントドリブンスタイルでの操縦が可能です。
+`edge` はブラウザの動作手続きを記述するだけではなく、*url* に対して *event* を設定していくイベント駆動型での操作を記述できます。
 イベントの *url* には文字列以外に正規表現も設定できるので、柔軟な設定が可能になります。
 自動操縦には不向きな場面も、あえて *url* を設定しないことで容易に手動操縦に切り替えれます。
 エラーが発生した場合でも可能な限り安全に終了処理を行います。
@@ -24,6 +24,11 @@ wes edge --download
 ```
 
 ## 使い方
+
+| argument | type | description |
+|:---|:---:|:---|
+| `callback` | *{Function}* | 実際の処理を記述します |
+| `terminate` | *{Function}* | 終了時の処理を記述します |
 
 *edge* は明示的に終了させるまで、待機状態を維持します。終了させるにはブラウザを閉じるか `navigation.emit('terminate')` を実行できる様にスクリプトを構成してください。
 
@@ -47,7 +52,7 @@ edge((window, navi, res) => {
         navi.emit('terminate', res, window)
     })
 
-    navi.on(/https?:\/\/./, (url) => {
+    navi.on(/https?:\/\/.+/, (url) => {
         console.log('URL: %O', url)
         res.exports.push(url)
     })
