@@ -1,10 +1,10 @@
 {
   "name": "edge",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Edge automation assistance",
   "main": "index.js",
   "dependencies": {
-    "webdriver": "0.2.12"
+    "webdriver": "0.2.13"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
