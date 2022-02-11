@@ -4,15 +4,18 @@ const { writeFileSync, existsdirSync } = require('filesystem')
 const { resolve, WorkingDirectory } = require('pathname')
 const Event = require('event')
 const { isRegExp } = require('typecheck')
-const { color } = require('ansi')
+const { eraseInLine, cursorHrAbs, color } = require('ansi')
 const { has } = require('argv')
 const { Window, request, getEdgeWebDriver } = require('webdriver')
 const TERMINATE = 'terminate'
+const BOL = cursorHrAbs(1) // beginning of line
+const EIL = eraseInLine(0) // erase in line
 
 function edge(callback, terminate) {
     let close = false
     class Navigation extends Event {
         emit(url, ...args) {
+            console.print(`${BOL}${EIL}`)
             if (url === TERMINATE) {
                 close = true
                 this.get(TERMINATE).forEach((callback) => {
