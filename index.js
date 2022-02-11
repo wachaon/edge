@@ -79,6 +79,7 @@ function edge(callback, terminate) {
         if (!close) navigation.emit(TERMINATE, result, window)
     } finally {
         window.close()
+        console.log('') // Line feed
         return result
     }
 }

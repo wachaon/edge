@@ -1,6 +1,6 @@
 const edge = require('/index.js')
 
-edge((window, navi, res) => {
+const ret = edge((window, navi, res) => {
     window.rect({
         x: 1,
         y: 1,
@@ -21,3 +21,5 @@ edge((window, navi, res) => {
 
     window.navigate('http://www.google.com')
 })
+
+console.log('ret // => %O', ret)

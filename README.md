@@ -32,13 +32,15 @@ wes edge --download
 
 *edge* は明示的に終了させるまで、待機状態を維持します。終了させるにはブラウザを閉じるか `navigation.emit('terminate')` を実行できる様にスクリプトを構成してください。
 
+`edge()` は戻り値として `callback()` 内の `result` を返却します。
+
 下記のコードを実行してください。
 ブラウザを閉じるか `https://www.yahoo` から始まる *url* に訪問するまで、*url* をコンソールに表示します。
 
 ```javascript
 const edge = require('edge.js')
 
-edge((window, navi, res) => {
+const ret = edge((window, navi, res) => {
     window.rect({
         x: 1,
         y: 1,
@@ -59,6 +61,8 @@ edge((window, navi, res) => {
 
     window.navigate('http://www.google.com')
 })
+
+console.log('ret // => %O', ret)
 ```
 
 ### `callback(window, navigation, result)`
