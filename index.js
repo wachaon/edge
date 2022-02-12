@@ -81,7 +81,7 @@ function edge(callback, terminate) {
         if (error.message !== errmsg) throw error
         if (!close) navigation.emit(TERMINATE, result, window)
     } finally {
-        window.close()
+        window.quit()
         console.log('') // Line feed
         return result
     }
