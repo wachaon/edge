@@ -1,11 +1,12 @@
 const IServerXMLHTTPRequest2 = require('MSXML2.ServerXMLHTTP')
-const genGUID = require('genGUID')
-const { writeFileSync, existsdirSync } = require('filesystem')
-const { resolve, WorkingDirectory } = require('pathname')
-const Event = require('event')
-const { isRegExp } = require('typecheck')
 const { eraseInLine, cursorHrAbs, color } = require('ansi')
 const { has } = require('argv')
+const { writeFileSync, existsdirSync } = require('filesystem')
+const { resolve, WorkingDirectory } = require('pathname')
+const isCLI = require('isCLI')
+const { isRegExp } = require('typecheck')
+const genGUID = require('genGUID')
+const Event = require('event')
 const { Window, request, getEdgeWebDriver } = require('webdriver')
 const TERMINATE = 'terminate'
 const BOL = cursorHrAbs(1) // beginning of line
@@ -99,6 +100,4 @@ function nomarize(url, size = 60) {
 }
 
 // command line
-if (wes.Modules[wes.main].path === __filename) {
-    if (has('d') || has('download')) getEdgeWebDriver()
-}
+if (isCLI(__filename) && (has('d') || has('download'))) getEdgeWebDriver()
