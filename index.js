@@ -12,7 +12,7 @@ const TERMINATE = 'terminate'
 const BOL = cursorHrAbs(1) // beginning of line
 const EIL = eraseInLine(0) // erase in line
 
-function edge(callback, terminate, options) {
+function edge(callback, terminate, options = { capabilities: {} }) {
     let close = false
     class Navigation extends Event {
         emit(url, ...args) {
