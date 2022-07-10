@@ -7,12 +7,12 @@ const isCLI = require('isCLI')
 const { isRegExp } = require('typecheck')
 const genGUID = require('genGUID')
 const Event = require('event')
-const { Window, request, getEdgeWebDriver } = require('webdriver')
+const { Window, request, getEdgeWebDriver } = require('../webdriver')
 const TERMINATE = 'terminate'
 const BOL = cursorHrAbs(1) // beginning of line
 const EIL = eraseInLine(0) // erase in line
 
-function edge(callback, terminate) {
+function edge(callback, terminate, options) {
     let close = false
     class Navigation extends Event {
         emit(url, ...args) {
@@ -36,7 +36,7 @@ function edge(callback, terminate) {
     }
     const navigation = new Navigation()
 
-    const window = new Window()
+    const window = new Window(null, 'EDGE', options)
     const result = {
         exports: {}
     }
