@@ -1,11 +1,8 @@
 {
   "name": "edge",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Edge automation assistance",
   "main": "index.js",
-  "dependencies": {
-    "webdriver": "0.4.1"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/wachaon/edge/issues"
   },
-  "homepage": "https://github.com/wachaon/edge#readme"
+  "homepage": "https://github.com/wachaon/edge#readme",
+  "wes": {
+    "dependencies": {
+      "webdriver": "0.5.0"
+    }
+  }
 }
