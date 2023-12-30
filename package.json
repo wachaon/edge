@@ -1,6 +1,6 @@
 {
   "name": "edge",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Edge automation assistance",
   "main": "index.js",
   "scripts": {
